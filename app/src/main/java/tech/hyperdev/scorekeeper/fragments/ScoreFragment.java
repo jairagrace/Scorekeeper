@@ -39,16 +39,16 @@ public class ScoreFragment extends Fragment {
         mBtnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                score++;
-                mScore.setText(score+"");
+                //score++;
+                //mScore.setText(score+"");
             }
         });
         mBtnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(score-1 >= 0){
-                    score--;
-                    mScore.setText(score+"");
+                    //score--;
+                    //mScore.setText(score+"");
                 }
             }
         });
