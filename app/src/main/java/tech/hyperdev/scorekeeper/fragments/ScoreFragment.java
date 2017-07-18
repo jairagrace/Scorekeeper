@@ -1,11 +1,13 @@
 package tech.hyperdev.scorekeeper.fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import tech.hyperdev.scorekeeper.R;
 
@@ -13,7 +15,6 @@ import tech.hyperdev.scorekeeper.R;
  * A simple {@link Fragment} subclass.
  */
 public class ScoreFragment extends Fragment {
-
     private String teamname;
     private int score;
     private TextView mTeamName;
@@ -35,6 +36,13 @@ public class ScoreFragment extends Fragment {
         mScore = (TextView) rootView.findViewById(R.id.textView2);
         View mBtnPlus = rootView.findViewById(R.id.btnPlus);
         View mBtnMinus = rootView.findViewById(R.id.btnMinus);
+
+        if(savedInstanceState != null){
+            this.score = savedInstanceState.getInt("score");
+            Toast.makeText(getContext(), "instance is not null", Toast.LENGTH_SHORT).show();
+        }
+        mScore.setText(this.score+"");
+
         mTeamName.setText(this.teamname);
         mBtnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +61,17 @@ public class ScoreFragment extends Fragment {
             }
         });
         return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("score",score);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
 }

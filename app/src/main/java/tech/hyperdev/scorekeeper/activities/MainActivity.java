@@ -19,15 +19,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        scoreFragment1 = new ScoreFragment();
-        scoreFragment2 = new ScoreFragment();
+        if(savedInstanceState == null) {
+            scoreFragment1 = new ScoreFragment();
+            scoreFragment2 = new ScoreFragment();
 
-        scoreFragment1.setTeamName("Team 1");
-        scoreFragment2.setTeamName("Team 2");
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.fragmentScore1, scoreFragment1);
-        mFragmentTransaction.replace(R.id.fragmentScore2, scoreFragment2);
-        mFragmentTransaction.commit();
+            scoreFragment1.setTeamName("Team 1");
+            scoreFragment2.setTeamName("Team 2");
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.fragmentScore1, scoreFragment1);
+            mFragmentTransaction.replace(R.id.fragmentScore2, scoreFragment2);
+            mFragmentTransaction.commit();
+        }
     }
 }
