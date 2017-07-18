@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import tech.hyperdev.scorekeeper.R;
 
@@ -19,6 +18,7 @@ public class ScoreFragment extends Fragment {
     private int score;
     private TextView mTeamName;
     private TextView mScore;
+
     public ScoreFragment() {
         this.score = 0;
         this.teamname = "Team Name";
@@ -39,7 +39,7 @@ public class ScoreFragment extends Fragment {
 
         if(savedInstanceState != null){
             this.score = savedInstanceState.getInt("score");
-            Toast.makeText(getContext(), "instance is not null", Toast.LENGTH_SHORT).show();
+            this.teamname = savedInstanceState.getString("teamname");
         }
         mScore.setText(this.score+"");
 
@@ -67,6 +67,7 @@ public class ScoreFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("score",score);
+        outState.putString("teamname",teamname);
     }
 
     @Override
